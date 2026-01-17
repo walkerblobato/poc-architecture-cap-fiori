@@ -1,0 +1,24 @@
+<mvc:View
+  controllerName="app001home.controller.Main"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  height="100%">
+
+  <VBox alignItems="Center" justifyContent="Center" class="sapUiLargeMargin">
+    <Title text="Bem-vindo ao Home App (app001)" level="H2" class="sapUiMediumMarginBottom"/>
+    <Text text="Esta é a aplicação app001-home integrada ao shell" class="sapUiSmallMarginBottom"/>
+    
+    <Panel headerText="Informações" class="sapUiMediumMarginTop">
+      <content>
+        <VBox class="sapUiSmallMargin">
+          <Label text="Aplicação:" class="sapUiTinyMarginBottom"/>
+          <Text text="app001-home"/>
+          
+          <Label text="Descrição:" class="sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+          <Text text="Aplicação inicial do sistema Clean Core Service"/>
+        </VBox>
+      </content>
+    </Panel>
+  </VBox>
+
+</mvc:View>

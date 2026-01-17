@@ -1,0 +1,41 @@
+<mvc:View
+  controllerName="shell.controller.App"
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:tnt="sap.tnt"
+  displayBlock="true"
+  height="100%">
+  <tnt:ToolPage id="toolPage">
+    <tnt:header>
+      <tnt:ToolHeader>
+        <Button
+          id="sideNavigationToggleButton"
+          icon="sap-icon://menu2"
+          type="Transparent"
+          press="onSideNavButtonPress"/>
+        <tnt:ToolHeaderUtilitySeparator/>
+        <Title text="Clean Core as a Service" level="H4"/>
+      </tnt:ToolHeader>
+    </tnt:header>
+    <tnt:sideContent>
+      <tnt:SideNavigation
+        id="sideNavigation"
+        expanded="true"
+        selectedKey="{/selectedKey}">
+        <tnt:NavigationList
+          id="navigationList"
+          itemSelect="onItemSelect">
+          <tnt:NavigationListItem
+            text="Home"
+            icon="sap-icon://home"
+            key="home"/>
+        </tnt:NavigationList>
+      </tnt:SideNavigation>
+    </tnt:sideContent>
+    <tnt:mainContents>
+      <VBox id="app001-home" height="100%">
+        <!-- app001-home will be loaded here -->
+      </VBox>
+    </tnt:mainContents>
+  </tnt:ToolPage>
+</mvc:View>
