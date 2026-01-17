@@ -1,0 +1,188 @@
+<mvc:View
+  controllerName="app003cleancorekpis.controller.Main"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  height="100%">
+
+  <Page title="Clean Core KPIs" showHeader="true">
+    <content>
+      <VBox class="sapUiMediumMargin">
+        <!-- Header Section -->
+        <Title text="Key Performance Indicators" level="H2" class="sapUiMediumMarginBottom"/>
+        <Text text="Monitor your Clean Core journey with these essential metrics" class="sapUiSmallMarginBottom"/>
+
+        <!-- KPI Tiles Grid -->
+        <FlexBox wrap="Wrap" class="sapUiMediumMarginTop">
+          <VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom" width="350px">
+            <items>
+              <GenericTile
+                header="{/kpis/0/title}"
+                frameType="TwoByOne"
+                press=".onKPIPress">
+                <tileContent>
+                  <TileContent>
+                    <content>
+                      <NumericContent
+                        value="{/kpis/0/value}"
+                        scale="{/kpis/0/unit}"
+                        indicator="{/kpis/0/trend}"
+                        valueColor="{/kpis/0/color}"/>
+                    </content>
+                  </TileContent>
+                </tileContent>
+              </GenericTile>
+            </items>
+          </VBox>
+
+          <VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom" width="350px">
+            <items>
+              <GenericTile
+                header="{/kpis/1/title}"
+                frameType="TwoByOne"
+                press=".onKPIPress">
+                <tileContent>
+                  <TileContent>
+                    <content>
+                      <NumericContent
+                        value="{/kpis/1/value}"
+                        scale="{/kpis/1/unit}"
+                        indicator="{/kpis/1/trend}"
+                        valueColor="{/kpis/1/color}"/>
+                    </content>
+                  </TileContent>
+                </tileContent>
+              </GenericTile>
+            </items>
+          </VBox>
+
+          <VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom" width="350px">
+            <items>
+              <GenericTile
+                header="{/kpis/2/title}"
+                frameType="TwoByOne"
+                press=".onKPIPress">
+                <tileContent>
+                  <TileContent>
+                    <content>
+                      <NumericContent
+                        value="{/kpis/2/value}"
+                        scale="{/kpis/2/unit}"
+                        indicator="{/kpis/2/trend}"
+                        valueColor="{/kpis/2/color}"/>
+                    </content>
+                  </TileContent>
+                </tileContent>
+              </GenericTile>
+            </items>
+          </VBox>
+
+          <VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom" width="350px">
+            <items>
+              <GenericTile
+                header="{/kpis/3/title}"
+                frameType="TwoByOne"
+                press=".onKPIPress">
+                <tileContent>
+                  <TileContent>
+                    <content>
+                      <NumericContent
+                        value="{/kpis/3/value}"
+                        scale="{/kpis/3/unit}"
+                        indicator="{/kpis/3/trend}"
+                        valueColor="{/kpis/3/color}"/>
+                    </content>
+                  </TileContent>
+                </tileContent>
+              </GenericTile>
+            </items>
+          </VBox>
+
+          <VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom" width="350px">
+            <items>
+              <GenericTile
+                header="{/kpis/4/title}"
+                frameType="TwoByOne"
+                press=".onKPIPress">
+                <tileContent>
+                  <TileContent>
+                    <content>
+                      <NumericContent
+                        value="{/kpis/4/value}"
+                        scale="{/kpis/4/unit}"
+                        indicator="{/kpis/4/trend}"
+                        valueColor="{/kpis/4/color}"/>
+                    </content>
+                  </TileContent>
+                </tileContent>
+              </GenericTile>
+            </items>
+          </VBox>
+
+          <VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom" width="350px">
+            <items>
+              <GenericTile
+                header="{/kpis/5/title}"
+                frameType="TwoByOne"
+                press=".onKPIPress">
+                <tileContent>
+                  <TileContent>
+                    <content>
+                      <NumericContent
+                        value="{/kpis/5/value}"
+                        scale="{/kpis/5/unit}"
+                        indicator="{/kpis/5/trend}"
+                        valueColor="{/kpis/5/color}"/>
+                    </content>
+                  </TileContent>
+                </tileContent>
+              </GenericTile>
+            </items>
+          </VBox>
+        </FlexBox>
+
+        <!-- Detailed Metrics Table -->
+        <Panel headerText="Detailed Metrics" class="sapUiMediumMarginTop">
+          <content>
+            <Table
+              id="kpiTable"
+              items="{/kpis}"
+              class="sapUiSmallMargin">
+              <columns>
+                <Column width="35%">
+                  <Text text="KPI"/>
+                </Column>
+                <Column width="20%" hAlign="End">
+                  <Text text="Value"/>
+                </Column>
+                <Column width="20%" hAlign="Center">
+                  <Text text="Trend"/>
+                </Column>
+                <Column width="25%" hAlign="Center">
+                  <Text text="Change"/>
+                </Column>
+              </columns>
+              <items>
+                <ColumnListItem>
+                  <cells>
+                    <Text text="{title}"/>
+                    <ObjectNumber 
+                      number="{value}" 
+                      unit="{unit}"/>
+                    <core:Icon 
+                      src="{= ${trend} === 'Up' ? 'sap-icon://up' : 'sap-icon://down'}" 
+                      color="{= ${trend} === 'Up' ? '#2b7d2b' : '#bb0000'}"/>
+                    <ObjectStatus 
+                      text="{deviation}" 
+                      state="{= ${trend} === 'Up' ? 'Success' : 'Error'}"/>
+                  </cells>
+                </ColumnListItem>
+              </items>
+            </Table>
+          </content>
+        </Panel>
+      </VBox>
+    </content>
+  </Page>
+
+</mvc:View>
