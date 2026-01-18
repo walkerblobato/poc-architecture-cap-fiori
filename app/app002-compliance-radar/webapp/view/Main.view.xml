@@ -1,0 +1,97 @@
+<mvc:View
+  controllerName="app002complianceradar.controller.Main"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  height="100%">
+
+  <Page title="Compliance Radar" showHeader="true">
+    <content>
+      <VBox class="sapUiMediumMargin">
+        <!-- Header Section -->
+        <Title text="Clean Core Compliance Overview" level="H2" class="sapUiMediumMarginBottom"/>
+        
+        <!-- KPI Tiles -->
+        <HBox class="sapUiSmallMarginBottom">
+          <VBox class="sapUiMediumMarginEnd" width="250px">
+            <Panel headerText="Overall Compliance Score">
+              <content>
+                <VBox alignItems="Center" class="sapUiSmallMargin">
+                  <Title text="{/complianceScore}%" level="H1" class="sapUiTinyMarginBottom"/>
+                  <Text text="Compliance Rate"/>
+                </VBox>
+              </content>
+            </Panel>
+          </VBox>
+
+          <VBox class="sapUiMediumMarginEnd" width="250px">
+            <Panel headerText="Total Checks">
+              <content>
+                <VBox alignItems="Center" class="sapUiSmallMargin">
+                  <Title text="{/totalChecks}" level="H1" class="sapUiTinyMarginBottom"/>
+                  <Text text="Checks Performed"/>
+                </VBox>
+              </content>
+            </Panel>
+          </VBox>
+
+          <VBox class="sapUiMediumMarginEnd" width="250px">
+            <Panel headerText="Passed">
+              <content>
+                <VBox alignItems="Center" class="sapUiSmallMargin">
+                  <Title text="{/passedChecks}" level="H1" class="sapUiTinyMarginBottom"/>
+                  <ObjectStatus text="Compliant" state="Success"/>
+                </VBox>
+              </content>
+            </Panel>
+          </VBox>
+
+          <VBox width="250px">
+            <Panel headerText="Failed">
+              <content>
+                <VBox alignItems="Center" class="sapUiSmallMargin">
+                  <Title text="{/failedChecks}" level="H1" class="sapUiTinyMarginBottom"/>
+                  <ObjectStatus text="Non-Compliant" state="Error"/>
+                </VBox>
+              </content>
+            </Panel>
+          </VBox>
+        </HBox>
+
+        <!-- Compliance Areas -->
+        <Panel headerText="Compliance by Area" class="sapUiMediumMarginTop">
+          <content>
+            <Table
+              id="complianceTable"
+              items="{/areas}"
+              class="sapUiSmallMargin">
+              <columns>
+                <Column width="40%">
+                  <Text text="Area"/>
+                </Column>
+                <Column width="30%" hAlign="Center">
+                  <Text text="Score"/>
+                </Column>
+                <Column width="30%" hAlign="Center">
+                  <Text text="Status"/>
+                </Column>
+              </columns>
+              <items>
+                <ColumnListItem>
+                  <cells>
+                    <Text text="{name}"/>
+                    <Text text="{score}%"/>
+                    <ObjectStatus 
+                      text="{score}%" 
+                      state="{= ${score} >= 80 ? 'Success' : ${score} >= 60 ? 'Warning' : 'Error'}"/>
+                  </cells>
+                </ColumnListItem>
+              </items>
+            </Table>
+          </content>
+        </Panel>
+      </VBox>
+    </content>
+  </Page>
+
+</mvc:View>

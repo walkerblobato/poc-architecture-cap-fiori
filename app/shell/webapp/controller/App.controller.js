@@ -1,8 +1,9 @@
 sap.ui.define([
   "sap/ui/core/mvc/Controller",
   "sap/ui/model/json/JSONModel",
-  "sap/ui/core/mvc/XMLView"
-], function (Controller, JSONModel, XMLView) {
+  "sap/ui/core/mvc/XMLView",
+  "sap/m/Page"
+], function (Controller, JSONModel, XMLView, Page) {
   "use strict";
 
   return Controller.extend("shell.controller.App", {
@@ -12,19 +13,10 @@ sap.ui.define([
       });
       this.getView().setModel(oModel);
 
-      // Load app001-home Main.view.xml
-      this._loadApp001Home();
-    },
+      this._loadedApps = {};
 
-    _loadApp001Home: function () {
-      const oMainContent = this.byId("app001-home");
-      
-      XMLView.create({
-        viewName: "app001home.view.Main",
-        id: this.getView().createId("app001homeView")
-      }).then(function (oView) {
-        oMainContent.addItem(oView);
-      });
+      // Load home app by default
+      this._navigateToApp("home");
     },
 
     onSideNavButtonPress: function () {
@@ -34,8 +26,60 @@ sap.ui.define([
     },
 
     onItemSelect: function (oEvent) {
-      // Home is always selected
-      this.getView().getModel().setProperty("/selectedKey", "home");
+      const oItem = oEvent.getParameter("item");
+      const sKey = oItem.getKey();
+
+      if (sKey) {
+        this._navigateToApp(sKey);
+      }
+    },
+
+    _navigateToApp: function (sAppKey) {
+      const oNavContainer = this.byId("navContainer");
+
+      // Check if app is already loaded
+      if (this._loadedApps[sAppKey]) {
+        oNavContainer.to(this._loadedApps[sAppKey]);
+        return;
+      }
+
+      // App configuration
+      const oAppConfig = {
+        "home": {
+          viewName: "app001home.view.Main",
+          id: "app001homeView"
+        },
+        "compliance-radar": {
+          viewName: "app002complianceradar.view.Main",
+          id: "app002complianceradarView"
+        },
+        "clean-core-kpis": {
+          viewName: "app003cleancorekpis.view.Main",
+          id: "app003cleancorekpisView"
+        }
+      };
+
+      const oConfig = oAppConfig[sAppKey];
+
+      if (!oConfig) {
+        console.error("App configuration not found for key:", sAppKey);
+        return;
+      }
+
+      console.log("Loading app:", sAppKey, "with config:", oConfig);
+
+      // Load the app view
+      XMLView.create({
+        viewName: oConfig.viewName,
+        id: this.getView().createId(oConfig.id)
+      }).then(function (oView) {
+        console.log("App loaded successfully:", sAppKey);
+        this._loadedApps[sAppKey] = oView.getId();
+        oNavContainer.addPage(oView);
+        oNavContainer.to(oView);
+      }.bind(this)).catch(function (oError) {
+        console.error("Error loading app:", sAppKey, oError);
+      });
     }
   });
 });
