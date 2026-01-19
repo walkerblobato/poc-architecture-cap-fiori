@@ -2,23 +2,28 @@
   controllerName="app001home.controller.Main"
   xmlns:mvc="sap.ui.core.mvc"
   xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:html="http://www.w3.org/1999/xhtml"
   height="100%">
 
-  <VBox alignItems="Center" justifyContent="Center" class="sapUiLargeMargin">
-    <Title text="Bem-vindo ao Home App (app001)" level="H2" class="sapUiMediumMarginBottom"/>
-    <Text text="Esta é a aplicação app001-home integrada ao shell" class="sapUiSmallMarginBottom"/>
-    
-    <Panel headerText="Informações" class="sapUiMediumMarginTop">
-      <content>
-        <VBox class="sapUiSmallMargin">
-          <Label text="Aplicação:" class="sapUiTinyMarginBottom"/>
-          <Text text="app001-home"/>
-          
-          <Label text="Descrição:" class="sapUiTinyMarginTop sapUiTinyMarginBottom"/>
-          <Text text="Aplicação inicial do sistema Clean Core Service"/>
-        </VBox>
-      </content>
-    </Panel>
-  </VBox>
+  <Page showHeader="false" class="homePage">
+    <content>
+      <!-- Header with connection status -->
+      <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginEnd sapUiSmallMarginBegin">
+        <Title text="My Home" level="H5" class="sapUiTinyMarginTop"/>
+        <HBox alignItems="Center">
+          <core:Icon src="sap-icon://connected" color="#2da552" size="0.75rem" class="sapUiTinyMarginEnd"/>
+          <Text text="{home>/connectionStatus}" class="sapUiTinyMarginTop"/>
+        </HBox>
+      </HBox>
+
+      <!-- Main Banner with HTML -->
+      <VBox class="sapUiMediumMargin">
+        <core:HTML content="{home>/bannerHTML}"/>
+      </VBox>
+
+      <!-- Additional content can go here -->
+    </content>
+  </Page>
 
 </mvc:View>

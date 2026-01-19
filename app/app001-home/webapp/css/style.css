@@ -1,0 +1,74 @@
+/* Home Page Styles */
+.homePage .sapMPageBgStandard {
+  background-color: #f5f5f5;
+}
+
+/* Hero Banner with Gradient */
+.homeHeroBanner {
+  background: linear-gradient(135deg, #0070f2 0%, #0052cc 50%, #003d99 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 112, 242, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.homeHeroBanner > div {
+  background: transparent;
+}
+
+/* Hero Text Styles */
+.heroTitle,
+.heroTitle > span,
+.heroTitle > h1,
+.heroTitle .sapMTitle {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.heroSubtitle,
+.heroSubtitle > span,
+.heroSubtitle .sapMText {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Metric Cards */
+.metricCard {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  min-width: 180px;
+  transition: all 0.3s ease;
+}
+
+.metricCard:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.metricValue,
+.metricValue > span,
+.metricValue > h1,
+.metricValue .sapMTitle {
+  color: white;
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.metricLabel,
+.metricLabel > span,
+.metricLabel .sapMText {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
