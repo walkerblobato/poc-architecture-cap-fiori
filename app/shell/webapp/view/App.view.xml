@@ -6,25 +6,7 @@
   displayBlock="true"
   height="100%">
   <tnt:ToolPage id="toolPage">
-  <ShellBar
-			title="Application Title"
-			secondTitle="Short description"
-			homeIcon="./resources/sap/ui/documentation/sdk/images/logo_sap.png"
-			showCopilot="true"
-			showSearch="true"
-			showNotifications="true"
-			notificationsNumber="2">
-		<menu>
-			<m:Menu>
-				<m:MenuItem text="Flight booking" icon="sap-icon://flight" />
-				<m:MenuItem text="Car rental" icon="sap-icon://car-rental" />
-			</m:Menu>
-		</menu>
-		<profile>
-			<m:Avatar initials="UI"/>
-		</profile>
-	</ShellBar>
-    <!-- <tnt:header>
+    <tnt:header>
       <tnt:ToolHeader>
         <Button
           id="sideNavigationToggleButton"
@@ -33,8 +15,12 @@
           press="onSideNavButtonPress"/>
         <tnt:ToolHeaderUtilitySeparator/>
         <Title text="Clean Core as a Service" level="H4"/>
+        <ToolbarSpacer/>
+        <Button icon="sap-icon://home" type="Transparent" tooltip="Home"/>
+        <Button icon="sap-icon://action-settings" type="Transparent" tooltip="Settings"/>
+        <Button icon="sap-icon://bell" type="Transparent" tooltip="Notifications"/>
       </tnt:ToolHeader>
-    </tnt:header> -->
+    </tnt:header>
     <tnt:sideContent>
       <tnt:SideNavigation
         id="sideNavigation"
