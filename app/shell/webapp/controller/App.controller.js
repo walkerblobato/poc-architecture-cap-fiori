@@ -34,6 +34,11 @@ sap.ui.define([
       }
     },
 
+    onAvatarPress: function () {
+      sap.m.MessageToast.show("User profile clicked!");
+      // Aqui você pode adicionar navegação para tela de perfil, menu dropdown, etc.
+    },
+
     _navigateToApp: function (sAppKey) {
       const oNavContainer = this.byId("navContainer");
 

@@ -16,9 +16,9 @@
         <tnt:ToolHeaderUtilitySeparator/>
         <Title text="Clean Core as a Service" level="H4"/>
         <ToolbarSpacer/>
-        <Button icon="sap-icon://home" type="Transparent" tooltip="Home"/>
         <Button icon="sap-icon://action-settings" type="Transparent" tooltip="Settings"/>
         <Button icon="sap-icon://bell" type="Transparent" tooltip="Notifications"/>
+        <Avatar initials="VO" tooltip="User Profile" displaySize="XS" class="avatarWithMargin" press="onAvatarPress" />
       </tnt:ToolHeader>
     </tnt:header>
     <tnt:sideContent>
